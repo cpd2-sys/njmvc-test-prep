@@ -7,7 +7,6 @@ st.set_page_config(
 )
 
 
-# Comprehensive Unique Question Bank (No duplicates, real NJ DMV manual rules)
 @st.cache_data
 def get_unique_question_pool():
     return [
@@ -383,304 +382,6 @@ def get_unique_question_pool():
                 " construction/work zones."
             ),
         },
-        {
-            "id": 21,
-            "question": (
-                "What should you do if your car starts to hydroplane on a wet"
-                " road?"
-            ),
-            "options": [
-                "Slam on the brakes hard.",
-                (
-                    "Take your foot off the gas pedal and hold the steering"
-                    " wheel straight."
-                ),
-                "Turn the steering wheel sharply to the left.",
-                "Speed up to push through the water.",
-            ],
-            "answer": (
-                "Take your foot off the gas pedal and hold the steering wheel"
-                " straight."
-            ),
-            "explanation": (
-                "Hydroplaning occurs when tires ride on a film of water. Ease"
-                " off the gas and do not brake or turn sharply until traction"
-                " returns."
-            ),
-        },
-        {
-            "id": 22,
-            "question": (
-                "What is the penalty for a violation of GDL restrictions (such"
-                " as driving past the curfew hours)?"
-            ),
-            "options": ["$50", "$100", "$200", "$500"],
-            "answer": "$100",
-            "explanation": (
-                "A fine of $100 is imposed for any violation of the conditions"
-                " of a GDL permit or probationary license."
-            ),
-        },
-        {
-            "id": 23,
-            "question": (
-                "A triangular orange and red sign on the rear of a vehicle"
-                " indicates:"
-            ),
-            "options": [
-                "An emergency vehicle",
-                "A slow-moving vehicle",
-                "A vehicle carrying hazardous materials",
-                "A driver learning how to drive",
-            ],
-            "answer": "A slow-moving vehicle",
-            "explanation": (
-                "A reflective orange and red triangle sign indicates a"
-                " slow-moving vehicle, such as farm machinery or horse-drawn"
-                " carriages."
-            ),
-        },
-        {
-            "id": 24,
-            "question": (
-                "What is the proper procedure if you miss your exit on an"
-                " expressway?"
-            ),
-            "options": [
-                "Safely reverse on the shoulder.",
-                "Make a U-turn across the median.",
-                "Go on to the next exit.",
-                "Stop traffic and back up.",
-            ],
-            "answer": "Go on to the next exit.",
-            "explanation": (
-                "If you miss an exit, never back up or try to turn around. Always"
-                " proceed to the next exit."
-            ),
-        },
-        {
-            "id": 25,
-            "question": (
-                "What is the name of the blind spots around large trucks and"
-                " buses?"
-            ),
-            "options": [
-                "Danger Zones",
-                "No-Zones",
-                "Blind Pockets",
-                "Dead Zones",
-            ],
-            "answer": "No-Zones",
-            "explanation": (
-                "Truck drivers cannot see several areas around their vehicle,"
-                " which are referred to as No-Zones."
-            ),
-        },
-        {
-            "id": 26,
-            "question": (
-                "Every vehicle registered in New Jersey must be insured for:"
-            ),
-            "options": [
-                "Collision coverage",
-                "Comprehensive coverage",
-                "Liability coverage",
-                "Full coverage",
-            ],
-            "answer": "Liability coverage",
-            "explanation": (
-                "Every vehicle registered in New Jersey must have mandatory"
-                " motor vehicle liability insurance coverage."
-            ),
-        },
-        {
-            "id": 27,
-            "question": (
-                "When parking uphill on a street with a curb, which way should"
-                " you turn your front wheels?"
-            ),
-            "options": [
-                "Away from the curb (to the left)",
-                "Toward the curb (to the right)",
-                "Straight ahead",
-                "It doesn't matter",
-            ],
-            "answer": "Away from the curb (to the left)",
-            "explanation": (
-                "When parking uphill with a curb, turn your front wheels away"
-                " from the curb so that if the car rolls, the back of the front"
-                " tire will catch the curb."
-            ),
-        },
-        {
-            "id": 28,
-            "question": (
-                "What does a solid yellow line next to a broken yellow line on"
-                " the highway mean?"
-            ),
-            "options": [
-                "Passing is allowed on both sides.",
-                "Passing is prohibited on both sides.",
-                (
-                    "Passing is allowed only on the side with the broken"
-                    " line."
-                ),
-                "You must come to a complete stop.",
-            ],
-            "answer": (
-                "Passing is allowed only on the side with the broken line."
-            ),
-            "explanation": (
-                "If the broken line is on your side, you may pass when safe. If"
-                " the solid line is on your side, passing is prohibited."
-            ),
-        },
-        {
-            "id": 29,
-            "question": (
-                "What is the penalty for driving while your license is"
-                " suspended?"
-            ),
-            "options": [
-                "A fine and possible additional suspension/jail time",
-                "Only a warning letter",
-                "A mandatory 24-hour community service",
-                "No penalty for the first offense",
-            ],
-            "answer": "A fine and possible additional suspension/jail time",
-            "explanation": (
-                "Driving while suspended results in fines, continued"
-                " suspension of driving privileges, and potential jail"
-                " sentence."
-            ),
-        },
-        {
-            "id": 30,
-            "question": (
-                "In city driving, a motorist should look at least how far"
-                " ahead?"
-            ),
-            "options": ["2 seconds", "5 seconds", "12 seconds", "30 seconds"],
-            "answer": "12 seconds",
-            "explanation": (
-                "In city driving, a motorist should look at least 12 seconds"
-                " ahead, meaning they should be able to see an object far"
-                " enough to reach it in about 12 seconds."
-            ),
-        },
-        {
-            "id": 31,
-            "question": (
-                "Excluding dependents, how many passengers is the holder of a"
-                " Probationary Driver License (under 21) permitted to have in"
-                " the vehicle?"
-            ),
-            "options": [
-                "3 or more passengers",
-                (
-                    "One additional passenger unless accompanied by a parent or"
-                    " guardian"
-                ),
-                "Two additional passengers",
-                "No passengers permitted at all",
-            ],
-            "answer": (
-                "One additional passenger unless accompanied by a parent or"
-                " guardian"
-            ),
-            "explanation": (
-                "Probationary drivers under 21 are limited to dependents and"
-                " one additional passenger, unless a parent/guardian is in the"
-                " car."
-            ),
-        },
-        {
-            "id": 32,
-            "question": (
-                "What is the Implied Consent Law in New Jersey?"
-            ),
-            "options": [
-                "Permission for someone else to drive your vehicle",
-                (
-                    "You agree to a breath test when suspected of drinking and"
-                    " driving"
-                ),
-                "All passengers must wear seat belts at all times",
-                "You agree to maintain auto insurance coverage",
-            ],
-            "answer": (
-                "You agree to a breath test when suspected of drinking and"
-                " driving"
-            ),
-            "explanation": (
-                "By using NJ roads, motorists have agreed to submit to a breath"
-                " test given by law enforcement or hospital staff following an"
-                " arrest for an drinking-and-driving offense."
-            ),
-        },
-        {
-            "id": 33,
-            "question": (
-                "What are the nighttime driving restrictions for a holder of a"
-                " GDL Special Learner Permit or Probationary License under"
-                " 21?"
-            ),
-            "options": [
-                "No driving between 10:00 pm and 5:00 am",
-                "No driving between 11:01 pm and 5:00 am",
-                "No driving between midnight and 6:00 am",
-                "No restrictions apply",
-            ],
-            "answer": "No driving between 11:01 pm and 5:00 am",
-            "explanation": (
-                "GDL drivers under 21 are prohibited from driving between"
-                " 11:01 pm and 5:00 am."
-            ),
-        },
-        {
-            "id": 34,
-            "question": (
-                "A 5-ounce glass of wine (12% alcohol) contains roughly the"
-                " same amount of alcohol as:"
-            ),
-            "options": [
-                "12 oz. of beer",
-                "1 oz. of whiskey",
-                "6 oz. of vodka",
-                "A 6-pack of beer",
-            ],
-            "answer": "12 oz. of beer",
-            "explanation": (
-                "Standard drink equivalence dictates that 1.5 oz of 80-proof"
-                " liquor, 5 oz of wine, and 12 oz of beer contain identical"
-                " amounts of alcohol."
-            ),
-        },
-        {
-            "id": 35,
-            "question": (
-                "What must you do before driving your car if it has snowed or"
-                " iced over?"
-            ),
-            "options": [
-                "Just turn on the defroster",
-                (
-                    "Remove accumulated ice or snow from the hood, trunk,"
-                    " roof, and windows"
-                ),
-                "Only clean the driver-side windshield",
-                "Nothing, wind will blow it off",
-            ],
-            "answer": (
-                "Remove accumulated ice or snow from the hood, trunk, roof,"
-                " and windows"
-            ),
-            "explanation": (
-                "Motorists must make all reasonable efforts to clear snow and"
-                " ice from the entire vehicle before driving to prevent"
-                " hazards."
-            ),
-        },
     ]
 
 
@@ -700,6 +401,10 @@ if "quiz_finished" not in st.session_state:
 if "selected_questions" not in st.session_state:
     st.session_state.selected_questions = []
 
+# Track consecutive correct streaks per question ID (e.g., {q_id: streak_count})
+if "mastery_streaks" not in st.session_state:
+    st.session_state.mastery_streaks = {}
+
 
 def reset_quiz():
     st.session_state.score = 0
@@ -708,10 +413,24 @@ def reset_quiz():
     st.session_state.selected_option = None
     st.session_state.quiz_finished = False
 
-    # Pull 10 guaranteed unique questions using random.sample
-    question_pool = get_unique_question_pool()
+    all_pool = get_unique_question_pool()
+
+    # Filter out questions that have been mastered (streak >= 2)
+    # If all questions are mastered, reset streaks so user can keep studying!
+    available_pool = [
+        q
+        for q in all_pool
+        if st.session_state.mastery_streaks.get(q["id"], 0) < 2
+    ]
+
+    if not available_pool:
+        st.session_state.mastery_streaks = {}
+        available_pool = all_pool
+
+    # Pick up to 10 questions from what's left
+    sample_size = min(10, len(available_pool))
     st.session_state.selected_questions = random.sample(
-        question_pool, min(10, len(question_pool))
+        available_pool, sample_size
     )
     st.session_state.quiz_started = True
 
@@ -719,16 +438,28 @@ def reset_quiz():
 # App Header
 st.title("🚗 NJMVC Written Test Prep App")
 st.markdown(
-    "Practice your knowledge with clean, unique New Jersey traffic law"
-    " questions!"
+    "Smart Study Mode: Questions you answer correctly **twice in a row** are"
+    " automatically mastered and hidden!"
 )
+
+# Show current mastery progress in sidebar/top
+mastered_count = sum(
+    1 for q_id, streak in st.session_state.mastery_streaks.items() if streak >= 2
+)
+total_questions = len(get_unique_question_pool())
+st.sidebar.metric(
+    label="🧠 Mastered Questions", value=f"{mastered_count} / {total_questions}"
+)
+
+if st.sidebar.button("Reset Mastery Progress"):
+    st.session_state.mastery_streaks = {}
+    st.rerun()
 
 # Start / Home Screen
 if not st.session_state.quiz_started:
-    total_pool = len(get_unique_question_pool())
     st.info(
-        f"Database loaded with {total_pool} unique questions. Click below to"
-        " start a completely randomized test!"
+        "Click below to start a smart practice session focusing on unmastered"
+        " material!"
     )
     if st.button("Start Practice Quiz", type="primary"):
         reset_quiz()
@@ -748,8 +479,8 @@ elif st.session_state.quiz_finished:
 
     if percentage >= 80:
         st.success(
-            "Great job! You are showing a strong understanding of NJMVC"
-            " rules."
+            "Great job! Mastered questions have been removed from your next"
+            " round."
         )
     else:
         st.warning(
@@ -757,7 +488,7 @@ elif st.session_state.quiz_finished:
             " you missed."
         )
 
-    if st.button("Try Again (New Questions)"):
+    if st.button("Start Next Round (Smart Filtered)"):
         reset_quiz()
         st.rerun()
 
@@ -775,6 +506,8 @@ else:
     st.markdown("---")
 
     current_question = questions[idx]
+    q_id = current_question["id"]
+
     st.subheader(current_question["question"])
 
     # Radio button for options
@@ -798,22 +531,46 @@ else:
         if not st.session_state.answered:
             if st.button("Submit Answer", type="primary"):
                 st.session_state.answered = True
-                if (
+                is_correct = (
                     st.session_state.selected_option
                     == current_question["answer"]
-                ):
+                )
+
+                if is_correct:
                     st.session_state.score += 1
+                    # Increase streak for this specific question ID
+                    st.session_state.mastery_streaks[q_id] = (
+                        st.session_state.mastery_streaks.get(q_id, 0) + 1
+                    )
+                else:
+                    # Reset streak to 0 if answered incorrectly
+                    st.session_state.mastery_streaks[q_id] = 0
+
                 st.rerun()
 
     # Feedback and Explanation display
     if st.session_state.answered:
         if st.session_state.selected_option == current_question["answer"]:
             st.success("✅ Correct!")
+            current_streak = st.session_state.mastery_streaks.get(q_id, 0)
+            if current_streak >= 2:
+                st.balloons()
+                st.info(
+                    "⭐ **Mastery Achieved!** You've answered this question"
+                    " correctly twice in a row. It will be omitted from future"
+                    " sets!"
+                )
+            else:
+                st.info(
+                    f"🔥 Mastery Streak: {current_streak}/2 correct"
+                    " consecutive times."
+                )
         else:
             st.error(
                 f"❌ Incorrect. The correct answer is:"
                 f" **{current_question['answer']}**"
             )
+            st.warning("⚠️ Streak reset to 0. You'll see this question again.")
 
         st.info(f"**Explanation:** {current_question['explanation']}")
 
