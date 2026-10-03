@@ -7,11 +7,12 @@ st.set_page_config(
 )
 
 
-# Automatically generate a massive pool of 500+ questions on startup
+# Comprehensive Unique Question Bank (No duplicates, real NJ DMV manual rules)
 @st.cache_data
-def generate_massive_question_pool():
-    base_questions = [
+def get_unique_question_pool():
+    return [
         {
+            "id": 1,
             "question": (
                 "What is the New Jersey speed limit in business or residential"
                 " districts, unless otherwise posted?"
@@ -24,6 +25,7 @@ def generate_massive_question_pool():
             ),
         },
         {
+            "id": 2,
             "question": (
                 "Under NJ law, a motorist who refuses to take a breath test is"
                 " subject to an MVC insurance surcharge of how much per year for"
@@ -38,6 +40,7 @@ def generate_massive_question_pool():
             ),
         },
         {
+            "id": 3,
             "question": (
                 "Any change of address must be reported to the NJ MVC within what"
                 " time period?"
@@ -50,6 +53,7 @@ def generate_massive_question_pool():
             ),
         },
         {
+            "id": 4,
             "question": (
                 "What shape is an octagonal traffic sign (such as a Stop sign)?"
             ),
@@ -61,6 +65,7 @@ def generate_massive_question_pool():
             ),
         },
         {
+            "id": 5,
             "question": (
                 "Headlights must be used between what times or conditions?"
             ),
@@ -84,6 +89,7 @@ def generate_massive_question_pool():
             ),
         },
         {
+            "id": 6,
             "question": "Road surfaces are most slippery during:",
             "options": [
                 "A heavy downpour after hours of rain",
@@ -98,6 +104,7 @@ def generate_massive_question_pool():
             ),
         },
         {
+            "id": 7,
             "question": (
                 "What is the blood alcohol concentration (BAC) level considered"
                 " legal intoxication for drivers 21 or older in NJ?"
@@ -110,6 +117,7 @@ def generate_massive_question_pool():
             ),
         },
         {
+            "id": 8,
             "question": (
                 "If a school bus has stopped with flashing red lights on a"
                 " two-lane road, what must motorists do?"
@@ -126,30 +134,554 @@ def generate_massive_question_pool():
                 " school bus lights on a two-lane road."
             ),
         },
-    ]
-
-    # Dynamically scale out to 500+ distinct practice permutations
-    pool = []
-    id_counter = 1
-    while len(pool) < 500:
-        for template in base_questions:
-            shuffled_opts = template["options"].copy()
-            random.shuffle(shuffled_opts)
-
-            pool.append({
-                "id": id_counter,
-                "question": (
-                    f"Practice Question #{id_counter}: "
-                    + template["question"]
+        {
+            "id": 9,
+            "question": (
+                "What should you do if your wheels drift onto the dirt shoulder"
+                " of the road and you want to return to the paved road?"
+            ),
+            "options": [
+                "Slam on the brakes immediately and turn sharply.",
+                (
+                    "Slow down, regain control, and slowly turn back onto the"
+                    " pavement."
                 ),
-                "options": shuffled_opts,
-                "answer": template["answer"],
-                "explanation": template["explanation"],
-            })
-            id_counter += 1
-            if len(pool) >= 500:
-                break
-    return pool
+                (
+                    "Speed up to match traffic and jerk the steering wheel to"
+                    " the left."
+                ),
+                "Shift into neutral and pull over completely.",
+            ],
+            "answer": (
+                "Slow down, regain control, and slowly turn back onto the"
+                " pavement."
+            ),
+            "explanation": (
+                "If your wheels drift off the road, stay calm, ease up on the"
+                " gas, slow down, and slowly steer back onto the pavement when"
+                " it is safe."
+            ),
+        },
+        {
+            "id": 10,
+            "question": (
+                "You are parked on a downhill street with a curb facing the"
+                " right. In which direction should you turn your wheels?"
+            ),
+            "options": [
+                "Away from the curb (to the left)",
+                "Toward the curb (to the right)",
+                "Straight ahead",
+                "It doesn't matter",
+            ],
+            "answer": "Toward the curb (to the right)",
+            "explanation": (
+                "When parking downhill with a curb, your vehicle's front wheels"
+                " should be turned sharply toward the curb so the vehicle rolls"
+                " against the curb if brakes fail."
+            ),
+        },
+        {
+            "id": 11,
+            "question": "What is the shape of a yield sign?",
+            "options": ["Octagon", "Triangle", "Diamond", "Rectangle"],
+            "answer": "Triangle",
+            "explanation": (
+                "A yield sign is a red and white equilateral triangle. It means"
+                " you must slow down and give way to traffic on the roadway you"
+                " are entering or crossing."
+            ),
+        },
+        {
+            "id": 12,
+            "question": (
+                "Unless otherwise posted, the speed limit on certain state"
+                " highways and interstates is:"
+            ),
+            "options": ["45 mph", "50 mph", "55 mph", "65 mph"],
+            "answer": "55 mph",
+            "explanation": (
+                "Certain state highways and all interstates have a default"
+                " speed limit of 55 mph unless posted otherwise."
+            ),
+        },
+        {
+            "id": 13,
+            "question": (
+                "To safely share the road with large trucks and buses, you"
+                " must know:"
+            ),
+            "options": [
+                (
+                    "That they can stop in the same distance as a passenger"
+                    " vehicle."
+                ),
+                (
+                    "The limitations of these vehicles regarding visibility,"
+                    " required stopping distance, and maneuverability."
+                ),
+                "That they have the right-of-way at all intersections.",
+                "That they cannot make wide right turns.",
+            ],
+            "answer": (
+                "The limitations of these vehicles regarding visibility,"
+                " required stopping distance, and maneuverability."
+            ),
+            "explanation": (
+                "Large vehicles have blind spots (no-zones), require"
+                " significantly more stopping distance, and make wide turns."
+            ),
+        },
+        {
+            "id": 14,
+            "question": (
+                "During bad weather conditions, how much longer does a truck"
+                " take to stop?"
+            ),
+            "options": [
+                "It takes the same distance as a car.",
+                "25% more",
+                "50% more",
+                "Up to 25% more",
+            ],
+            "answer": "Up to 25% more",
+            "explanation": (
+                "Under adverse weather conditions, a truck can take as much as"
+                " 25% longer to stop than under normal conditions."
+            ),
+        },
+        {
+            "id": 15,
+            "question": (
+                "What should you do if your brakes suddenly fail while driving?"
+            ),
+            "options": [
+                "Jump out of the car immediately.",
+                (
+                    "Shift to a lower gear and pump the brake pedal hard and"
+                    " fast several times."
+                ),
+                "Turn off the ignition key instantly.",
+                (
+                    "Pull the emergency brake all the way up immediately at"
+                    " high speed."
+                ),
+            ],
+            "answer": (
+                "Shift to a lower gear and pump the brake pedal hard and fast"
+                " several times."
+            ),
+            "explanation": (
+                "If brakes fail, shift to a lower gear and pump the brake pedal"
+                " fast and hard."
+            ),
+        },
+        {
+            "id": 16,
+            "question": (
+                "What is the penalty for altering a driver license or showing"
+                " an altered driver license?"
+            ),
+            "options": [
+                "A fine of up to $200",
+                (
+                    "A fine of up to $1,000, up to 6 months imprisonment, and"
+                    " loss of driving privilege"
+                ),
+                "A warning letter from the MVC",
+                "Only a 30-day suspension",
+            ],
+            "answer": (
+                "A fine of up to $1,000, up to 6 months imprisonment, and loss"
+                " of driving privilege"
+            ),
+            "explanation": (
+                "Alteration of a license or showing an altered license can"
+                " result in a fine up to $1,000, imprisonment up to 6 months,"
+                " and loss of driving privileges."
+            ),
+        },
+        {
+            "id": 17,
+            "question": (
+                "Except when parking, what is the rule for cell phone use while"
+                " driving for a holder of a GDL permit or license?"
+            ),
+            "options": [
+                "Allowed using a hands-free device only.",
+                "Allowed for emergency calls only.",
+                (
+                    "Strictly prohibited (no hand-held or hands-free cellular"
+                    " devices)."
+                ),
+                "Allowed if talking to parents.",
+            ],
+            "answer": (
+                "Strictly prohibited (no hand-held or hands-free cellular"
+                " devices)."
+            ),
+            "explanation": (
+                "GDL drivers (permit or probationary holders) may not use any"
+                " electronic devices, hand-held or hands-free, while driving."
+            ),
+        },
+        {
+            "id": 18,
+            "question": "What color is a rectangular regulatory sign?",
+            "options": [
+                "Yellow and black",
+                "White and red, or black and white",
+                "Green and white",
+                "Orange and black",
+            ],
+            "answer": "White and red, or black and white",
+            "explanation": (
+                "Regulatory signs convey rules like speed limits or stop rules"
+                " and are typically black and white or red and white."
+            ),
+        },
+        {
+            "id": 19,
+            "question": (
+                "When approaching an uncontrolled intersection, what is the best"
+                " practice?"
+            ),
+            "options": [
+                "Speed up to clear the intersection quickly.",
+                (
+                    "Reduce speed and be ready to stop if any traffic is coming"
+                    " from the right or left."
+                ),
+                "Always assume you have the right-of-way.",
+                "Close your eyes and cross.",
+            ],
+            "answer": (
+                "Reduce speed and be ready to stop if any traffic is coming from"
+                " the right or left."
+            ),
+            "explanation": (
+                "An uncontrolled intersection means no signs or signals are"
+                " present. You should reduce speed and be prepared to yield."
+            ),
+        },
+        {
+            "id": 20,
+            "question": (
+                "In New Jersey, drivers are subject to double fines for motor"
+                " vehicle violations committed in:"
+            ),
+            "options": [
+                "School zones",
+                "Construction or work zones",
+                "Residential zones",
+                "Hospital zones",
+            ],
+            "answer": "Construction or work zones",
+            "explanation": (
+                "Fines are doubled for various motor vehicle violations"
+                " committed within designated safe corridors or"
+                " construction/work zones."
+            ),
+        },
+        {
+            "id": 21,
+            "question": (
+                "What should you do if your car starts to hydroplane on a wet"
+                " road?"
+            ),
+            "options": [
+                "Slam on the brakes hard.",
+                (
+                    "Take your foot off the gas pedal and hold the steering"
+                    " wheel straight."
+                ),
+                "Turn the steering wheel sharply to the left.",
+                "Speed up to push through the water.",
+            ],
+            "answer": (
+                "Take your foot off the gas pedal and hold the steering wheel"
+                " straight."
+            ),
+            "explanation": (
+                "Hydroplaning occurs when tires ride on a film of water. Ease"
+                " off the gas and do not brake or turn sharply until traction"
+                " returns."
+            ),
+        },
+        {
+            "id": 22,
+            "question": (
+                "What is the penalty for a violation of GDL restrictions (such"
+                " as driving past the curfew hours)?"
+            ),
+            "options": ["$50", "$100", "$200", "$500"],
+            "answer": "$100",
+            "explanation": (
+                "A fine of $100 is imposed for any violation of the conditions"
+                " of a GDL permit or probationary license."
+            ),
+        },
+        {
+            "id": 23,
+            "question": (
+                "A triangular orange and red sign on the rear of a vehicle"
+                " indicates:"
+            ),
+            "options": [
+                "An emergency vehicle",
+                "A slow-moving vehicle",
+                "A vehicle carrying hazardous materials",
+                "A driver learning how to drive",
+            ],
+            "answer": "A slow-moving vehicle",
+            "explanation": (
+                "A reflective orange and red triangle sign indicates a"
+                " slow-moving vehicle, such as farm machinery or horse-drawn"
+                " carriages."
+            ),
+        },
+        {
+            "id": 24,
+            "question": (
+                "What is the proper procedure if you miss your exit on an"
+                " expressway?"
+            ),
+            "options": [
+                "Safely reverse on the shoulder.",
+                "Make a U-turn across the median.",
+                "Go on to the next exit.",
+                "Stop traffic and back up.",
+            ],
+            "answer": "Go on to the next exit.",
+            "explanation": (
+                "If you miss an exit, never back up or try to turn around. Always"
+                " proceed to the next exit."
+            ),
+        },
+        {
+            "id": 25,
+            "question": (
+                "What is the name of the blind spots around large trucks and"
+                " buses?"
+            ),
+            "options": [
+                "Danger Zones",
+                "No-Zones",
+                "Blind Pockets",
+                "Dead Zones",
+            ],
+            "answer": "No-Zones",
+            "explanation": (
+                "Truck drivers cannot see several areas around their vehicle,"
+                " which are referred to as No-Zones."
+            ),
+        },
+        {
+            "id": 26,
+            "question": (
+                "Every vehicle registered in New Jersey must be insured for:"
+            ),
+            "options": [
+                "Collision coverage",
+                "Comprehensive coverage",
+                "Liability coverage",
+                "Full coverage",
+            ],
+            "answer": "Liability coverage",
+            "explanation": (
+                "Every vehicle registered in New Jersey must have mandatory"
+                " motor vehicle liability insurance coverage."
+            ),
+        },
+        {
+            "id": 27,
+            "question": (
+                "When parking uphill on a street with a curb, which way should"
+                " you turn your front wheels?"
+            ),
+            "options": [
+                "Away from the curb (to the left)",
+                "Toward the curb (to the right)",
+                "Straight ahead",
+                "It doesn't matter",
+            ],
+            "answer": "Away from the curb (to the left)",
+            "explanation": (
+                "When parking uphill with a curb, turn your front wheels away"
+                " from the curb so that if the car rolls, the back of the front"
+                " tire will catch the curb."
+            ),
+        },
+        {
+            "id": 28,
+            "question": (
+                "What does a solid yellow line next to a broken yellow line on"
+                " the highway mean?"
+            ),
+            "options": [
+                "Passing is allowed on both sides.",
+                "Passing is prohibited on both sides.",
+                (
+                    "Passing is allowed only on the side with the broken"
+                    " line."
+                ),
+                "You must come to a complete stop.",
+            ],
+            "answer": (
+                "Passing is allowed only on the side with the broken line."
+            ),
+            "explanation": (
+                "If the broken line is on your side, you may pass when safe. If"
+                " the solid line is on your side, passing is prohibited."
+            ),
+        },
+        {
+            "id": 29,
+            "question": (
+                "What is the penalty for driving while your license is"
+                " suspended?"
+            ),
+            "options": [
+                "A fine and possible additional suspension/jail time",
+                "Only a warning letter",
+                "A mandatory 24-hour community service",
+                "No penalty for the first offense",
+            ],
+            "answer": "A fine and possible additional suspension/jail time",
+            "explanation": (
+                "Driving while suspended results in fines, continued"
+                " suspension of driving privileges, and potential jail"
+                " sentence."
+            ),
+        },
+        {
+            "id": 30,
+            "question": (
+                "In city driving, a motorist should look at least how far"
+                " ahead?"
+            ),
+            "options": ["2 seconds", "5 seconds", "12 seconds", "30 seconds"],
+            "answer": "12 seconds",
+            "explanation": (
+                "In city driving, a motorist should look at least 12 seconds"
+                " ahead, meaning they should be able to see an object far"
+                " enough to reach it in about 12 seconds."
+            ),
+        },
+        {
+            "id": 31,
+            "question": (
+                "Excluding dependents, how many passengers is the holder of a"
+                " Probationary Driver License (under 21) permitted to have in"
+                " the vehicle?"
+            ),
+            "options": [
+                "3 or more passengers",
+                (
+                    "One additional passenger unless accompanied by a parent or"
+                    " guardian"
+                ),
+                "Two additional passengers",
+                "No passengers permitted at all",
+            ],
+            "answer": (
+                "One additional passenger unless accompanied by a parent or"
+                " guardian"
+            ),
+            "explanation": (
+                "Probationary drivers under 21 are limited to dependents and"
+                " one additional passenger, unless a parent/guardian is in the"
+                " car."
+            ),
+        },
+        {
+            "id": 32,
+            "question": (
+                "What is the Implied Consent Law in New Jersey?"
+            ),
+            "options": [
+                "Permission for someone else to drive your vehicle",
+                (
+                    "You agree to a breath test when suspected of drinking and"
+                    " driving"
+                ),
+                "All passengers must wear seat belts at all times",
+                "You agree to maintain auto insurance coverage",
+            ],
+            "answer": (
+                "You agree to a breath test when suspected of drinking and"
+                " driving"
+            ),
+            "explanation": (
+                "By using NJ roads, motorists have agreed to submit to a breath"
+                " test given by law enforcement or hospital staff following an"
+                " arrest for an drinking-and-driving offense."
+            ),
+        },
+        {
+            "id": 33,
+            "question": (
+                "What are the nighttime driving restrictions for a holder of a"
+                " GDL Special Learner Permit or Probationary License under"
+                " 21?"
+            ),
+            "options": [
+                "No driving between 10:00 pm and 5:00 am",
+                "No driving between 11:01 pm and 5:00 am",
+                "No driving between midnight and 6:00 am",
+                "No restrictions apply",
+            ],
+            "answer": "No driving between 11:01 pm and 5:00 am",
+            "explanation": (
+                "GDL drivers under 21 are prohibited from driving between"
+                " 11:01 pm and 5:00 am."
+            ),
+        },
+        {
+            "id": 34,
+            "question": (
+                "A 5-ounce glass of wine (12% alcohol) contains roughly the"
+                " same amount of alcohol as:"
+            ),
+            "options": [
+                "12 oz. of beer",
+                "1 oz. of whiskey",
+                "6 oz. of vodka",
+                "A 6-pack of beer",
+            ],
+            "answer": "12 oz. of beer",
+            "explanation": (
+                "Standard drink equivalence dictates that 1.5 oz of 80-proof"
+                " liquor, 5 oz of wine, and 12 oz of beer contain identical"
+                " amounts of alcohol."
+            ),
+        },
+        {
+            "id": 35,
+            "question": (
+                "What must you do before driving your car if it has snowed or"
+                " iced over?"
+            ),
+            "options": [
+                "Just turn on the defroster",
+                (
+                    "Remove accumulated ice or snow from the hood, trunk,"
+                    " roof, and windows"
+                ),
+                "Only clean the driver-side windshield",
+                "Nothing, wind will blow it off",
+            ],
+            "answer": (
+                "Remove accumulated ice or snow from the hood, trunk, roof,"
+                " and windows"
+            ),
+            "explanation": (
+                "Motorists must make all reasonable efforts to clear snow and"
+                " ice from the entire vehicle before driving to prevent"
+                " hazards."
+            ),
+        },
+    ]
 
 
 # Initialize Session State Variables
@@ -176,8 +708,8 @@ def reset_quiz():
     st.session_state.selected_option = None
     st.session_state.quiz_finished = False
 
-    question_pool = generate_massive_question_pool()
-    # Pull 10 random questions out of the 500+ pool
+    # Pull 10 guaranteed unique questions using random.sample
+    question_pool = get_unique_question_pool()
     st.session_state.selected_questions = random.sample(
         question_pool, min(10, len(question_pool))
     )
@@ -186,14 +718,17 @@ def reset_quiz():
 
 # App Header
 st.title("🚗 NJMVC Written Test Prep App")
-st.markdown("Practice your knowledge with a massive 500+ question bank!")
+st.markdown(
+    "Practice your knowledge with clean, unique New Jersey traffic law"
+    " questions!"
+)
 
 # Start / Home Screen
 if not st.session_state.quiz_started:
-    total_pool = len(generate_massive_question_pool())
+    total_pool = len(get_unique_question_pool())
     st.info(
-        f"Loaded database containing {total_pool} questions. Click below to"
-        " start a randomized practice test!"
+        f"Database loaded with {total_pool} unique questions. Click below to"
+        " start a completely randomized test!"
     )
     if st.button("Start Practice Quiz", type="primary"):
         reset_quiz()
