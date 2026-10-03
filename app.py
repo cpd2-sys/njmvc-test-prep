@@ -88,9 +88,7 @@ QUESTIONS = [
         ),
     },
     {
-        "question": (
-            "What is the shape of a yield sign?"
-        ),
+        "question": "What is the shape of a yield sign?",
         "options": [
             "Octagon",
             "Triangle",
@@ -159,9 +157,7 @@ QUESTIONS = [
         ),
     },
     {
-        "question": (
-            "Headlights must be used:"
-        ),
+        "question": "Headlights must be used:",
         "options": [
             "Only between midnight and sunrise.",
             (
@@ -194,6 +190,8 @@ if "selected_option" not in st.session_state:
     st.session_state.selected_option = None
 if "quiz_started" not in st.session_state:
     st.session_state.quiz_started = False
+if "quiz_finished" not in st.session_state:
+    st.session_state.quiz_finished = False
 if "shuffled_questions" not in st.session_state:
     st.session_state.shuffled_questions = QUESTIONS.copy()
 
@@ -203,6 +201,7 @@ def reset_quiz():
     st.session_state.current_q_index = 0
     st.session_state.answered = False
     st.session_state.selected_option = None
+    st.session_state.quiz_finished = False
     random.shuffle(st.session_state.shuffled_questions)
     st.session_state.quiz_started = True
 
@@ -221,13 +220,40 @@ if not st.session_state.quiz_started:
         reset_quiz()
         st.rerun()
 
+elif st.session_state.quiz_finished:
+    # Quiz Completed Screen
+    st.balloons()
+    st.subheader("🎉 Quiz Completed!")
+    final_score = st.session_state.score
+    total_q = len(st.session_state.shuffled_questions)
+    percentage = (final_score / total_q) * 100
+
+    st.write(
+        f"You scored **{final_score} out of {total_q}** ({percentage:.0f}%)"
+    )
+
+    if percentage >= 80:
+        st.success(
+            "Great job! You are showing a strong understanding of NJMVC"
+            " rules."
+        )
+    else:
+        st.warning(
+            "Keep practicing! Review the New Jersey Driver Manual for sections"
+            " you missed."
+        )
+
+    if st.button("Try Again"):
+        reset_quiz()
+        st.rerun()
+
 else:
     # Quiz Layout
     questions = st.session_state.shuffled_questions
     idx = st.session_state.current_q_index
 
     # Progress bar and score
-    progress = (idx) / len(questions)
+    progress = idx / len(questions)
     st.progress(progress)
     st.write(f"**Question {idx + 1} of {len(questions)}**")
     st.write(f"Current Score: {st.session_state.score}")
@@ -279,42 +305,12 @@ else:
 
         with col2:
             if idx < len(questions) - 1:
-                if st.button("Next Question ➡️"):
+                if st.button("Next Question ➡️️"):
                     st.session_state.current_q_index += 1
                     st.session_state.answered = False
                     st.session_state.selected_option = None
                     st.rerun()
             else:
                 if st.button("View Final Results 🏆"):
-                    st.session_state.current_q_index += (
-                        1  # Move past last index to show results screen
-                    )
+                    st.session_state.quiz_finished = True
                     st.rerun()
-
-    # Quiz Completed Screen
-    if st.session_state.current_q_index >= len(questions):
-        st.empty()
-        st.balloons()
-        st.subheader("🎉 Quiz Completed!")
-        final_score = st.session_state.score
-        total_q = len(questions)
-        percentage = (final_score / total_q) * 100
-
-        st.write(
-            f"You scored **{final_score} out of {total_q}** ({percentage:.0f}%)"
-        )
-
-        if percentage >= 80:
-            st.success(
-                "Great job! You are showing a strong understanding of NJMVC"
-                " rules."
-            )
-        else:
-            st.warning(
-                "Keep practicing! Review the New Jersey Driver Manual for"
-                " sections you missed."
-            )
-
-        if st.button("Try Again"):
-            reset_quiz()
-            st.rerun()
