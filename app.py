@@ -6,8 +6,8 @@ st.set_page_config(
     page_title="NJMVC Written Test Prep", page_icon="🚗", layout="centered"
 )
 
-# Question Bank
-QUESTIONS = [
+# Expanded Question Bank (More questions to pick from randomly)
+QUESTION_POOL = [
     {
         "question": (
             "What is the New Jersey speed limit in business or residential"
@@ -177,6 +177,127 @@ QUESTIONS = [
             " rain, snow, ice), or when visibility is reduced below 500 feet."
         ),
     },
+    {
+        "question": (
+            "During bad weather conditions, how much longer does a truck take to"
+            " stop?"
+        ),
+        "options": [
+            "It takes the same distance as a car.",
+            "25% more",
+            "50% more",
+            "Up to 25% more",
+        ],
+        "answer": "Up to 25% more",
+        "explanation": (
+            "Under adverse weather conditions, a truck can take as much as 25%"
+            " longer to stop than under normal conditions."
+        ),
+    },
+    {
+        "question": (
+            "What should you do if your brakes suddenly fail while driving?"
+        ),
+        "options": [
+            "Jump out of the car immediately.",
+            (
+                "Shift to a lower gear and pump the brake pedal hard and"
+                " fast several times."
+            ),
+            "Turn off the ignition key instantly.",
+            "Pull the emergency brake all the way up immediately at high speed.",
+        ],
+        "answer": (
+            "Shift to a lower gear and pump the brake pedal hard and fast"
+            " several times."
+        ),
+        "explanation": (
+            "If brakes fail, shift to a lower gear and pump the brake pedal fast"
+            " and hard. You can also use the parking brake while holding the"
+            " release button."
+        ),
+    },
+    {
+        "question": (
+            "What is the penalty for altering a driver license or showing an"
+            " altered driver license?"
+        ),
+        "options": [
+            "A fine of up to $200",
+            (
+                "A fine of up to $1,000, up to 6 months imprisonment, and loss"
+                " of driving privilege"
+            ),
+            "A warning letter from the MVC",
+            "Only a 30-day suspension",
+        ],
+        "answer": (
+            "A fine of up to $1,000, up to 6 months imprisonment, and loss of"
+            " driving privilege"
+        ),
+        "explanation": (
+            "Alteration of a license or showing an altered license can result"
+            " in a fine up to $1,000, imprisonment up to 6 months, and loss of"
+            " driving privileges."
+        ),
+    },
+    {
+        "question": (
+            "Except when parking, what is the rule for cell phone use while"
+            " driving for a holder of a GDL permit or license?"
+        ),
+        "options": [
+            "Allowed using a hands-free device only.",
+            "Allowed for emergency calls only.",
+            "Strictly prohibited (no hand-held or hands-free cellular devices).",
+            "Allowed if talking to parents.",
+        ],
+        "answer": (
+            "Strictly prohibited (no hand-held or hands-free cellular"
+            " devices)."
+        ),
+        "explanation": (
+            "GDL drivers (permit or probationary holders) may not use any"
+            " electronic devices, hand-held or hands-free, while driving."
+        ),
+    },
+    {
+        "question": "What color is a rectangular regulatory sign?",
+        "options": [
+            "Yellow and black",
+            "White and red, or black and white",
+            "Green and white",
+            "Orange and black",
+        ],
+        "answer": "White and red, or black and white",
+        "explanation": (
+            "Regulatory signs convey rules like speed limits or stop rules and"
+            " are typically black and white or red and white."
+        ),
+    },
+    {
+        "question": (
+            "When approaching an uncontrolled intersection, what is the best"
+            " practice?"
+        ),
+        "options": [
+            "Speed up to clear the intersection quickly.",
+            (
+                "Reduce speed and be ready to stop if any traffic is coming from"
+                " the right or left."
+            ),
+            "Always assume you have the right-of-way.",
+            "Close your eyes and cross.",
+        ],
+        "answer": (
+            "Reduce speed and be ready to stop if any traffic is coming from"
+            " the right or left."
+        ),
+        "explanation": (
+            "An uncontrolled intersection means no signs or signals are present."
+            " You should reduce speed and be prepared to yield."
+        ),
+    },
 ]
 
 # Initialize Session State Variables
@@ -192,8 +313,8 @@ if "quiz_started" not in st.session_state:
     st.session_state.quiz_started = False
 if "quiz_finished" not in st.session_state:
     st.session_state.quiz_finished = False
-if "shuffled_questions" not in st.session_state:
-    st.session_state.shuffled_questions = QUESTIONS.copy()
+if "selected_questions" not in st.session_state:
+    st.session_state.selected_questions = []
 
 
 def reset_quiz():
@@ -202,7 +323,10 @@ def reset_quiz():
     st.session_state.answered = False
     st.session_state.selected_option = None
     st.session_state.quiz_finished = False
-    random.shuffle(st.session_state.shuffled_questions)
+    # Randomly pick 10 unique questions from the pool every time the quiz starts
+    st.session_state.selected_questions = random.sample(
+        QUESTION_POOL, min(10, len(QUESTION_POOL))
+    )
     st.session_state.quiz_started = True
 
 
@@ -213,8 +337,8 @@ st.markdown("Practice your knowledge of New Jersey traffic laws and road rules."
 # Start / Home Screen
 if not st.session_state.quiz_started:
     st.info(
-        "Click the button below to start a practice quiz session with questions"
-        " modeled after the NJ Driver Manual."
+        "Click the button below to start a practice quiz with a fresh set of"
+        " randomized questions!"
     )
     if st.button("Start Practice Quiz", type="primary"):
         reset_quiz()
@@ -225,7 +349,7 @@ elif st.session_state.quiz_finished:
     st.balloons()
     st.subheader("🎉 Quiz Completed!")
     final_score = st.session_state.score
-    total_q = len(st.session_state.shuffled_questions)
+    total_q = len(st.session_state.selected_questions)
     percentage = (final_score / total_q) * 100
 
     st.write(
@@ -243,13 +367,13 @@ elif st.session_state.quiz_finished:
             " you missed."
         )
 
-    if st.button("Try Again"):
+    if st.button("Try Again (New Questions)"):
         reset_quiz()
         st.rerun()
 
 else:
     # Quiz Layout
-    questions = st.session_state.shuffled_questions
+    questions = st.session_state.selected_questions
     idx = st.session_state.current_q_index
 
     # Progress bar and score
@@ -305,7 +429,7 @@ else:
 
         with col2:
             if idx < len(questions) - 1:
-                if st.button("Next Question ➡️️"):
+                if st.button("Next Question ➡️"):
                     st.session_state.current_q_index += 1
                     st.session_state.answered = False
                     st.session_state.selected_option = None
